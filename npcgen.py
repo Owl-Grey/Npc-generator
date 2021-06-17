@@ -11,7 +11,7 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.tabbedpanel import TabbedPanel
 from kivy.lang import Builder
 
-
+Window.size=(1080,2340)
 
 temp = ["Флегма","Сангва","Меланха","Холера"]
 aug = [["Протезирование","Порт для подключения к сетевым устройствам", "Железный кулак","Стабилизатор клинка","Баллистический стабилизатор","Скрытый клинок","Дополнительный огнестрел в руках","Мышечный стабилизатор","Мышечный парализатор","Проект «Восхождение»","Фонарь","Проект «Паук»","Разрыватель материи","Укротитель замков","Помощник хирурга"],
@@ -72,7 +72,7 @@ def rand_character():
 
 
 
-class Container(GridLayout):
+class Container(TabbedPanel):
     def rand_character(self):
         numb=randint(2,4)
         for i in range(numb):
@@ -127,10 +127,10 @@ class Container(GridLayout):
         self.rand_character()
         self.rand_aug()
 
-class My(App):
+class MyApp(App):
     def build(self):
         return Container()
 
 
 if __name__ == "__main__":
-	My().run()
+	MyApp().run()

@@ -1,56 +1,88 @@
 
 
-
 <Container>:
-    rows: 32
     name:name
     temp:temp
     ch:ch
     aug: aug
     char:char
-    AnchorLayout:
-        Label:
-            text: "Генератор неигровых персонажей"
+    do_default_tab: False
+    tab_width:358
 
-    GridLayout:
-        rows:2
-        Label:
-            text:"Имя"
-        Label:
-            id: name
-            text:""
-    GridLayout:
-        rows:2
-        Label:
-            text:"Темперамент"
-        Label:
-            id: temp
-            text:""
-    GridLayout:
-        rows:2
-        Label:
-            text:"Характеристики"
-        Label:
-            id: ch
-            text:""
-    GridLayout:
-        rows:2
-        Label:
-            text:"Аугментации"
-        Label:
-            id: aug
-            text:""
-    GridLayout:
-        rows:2
-        Label:
-            text:"Характер"
-        Label:
-            id: char
-            text:""
-    BoxLayout:
-        padding: 20
-        Button:
-            text: "Сгенерировать"
-            font_size: 40
-            on_release:
-                root.gen()
+    TabbedPanelItem:
+
+        text: 'Генератор НПС'
+        GridLayout:
+            rows: 32
+            GridLayout:
+                rows:2
+                Label:
+                    text:"Имя"
+                    font_size: 18
+                    bold: True
+                    italic: True                    
+                Label:
+                    id: name
+                    text:""
+
+
+            GridLayout:
+                rows:2
+                Label:
+                    text:"Темперамент"
+                    font_size: 18
+                    bold: True
+                    italic: True
+                Label:
+                    id: temp
+                    text:""
+            GridLayout:
+                rows:2
+                Label:
+                    text:"Характеристики"
+                    font_size: 18
+                    bold: True
+                    italic: True
+                Label:
+                    id: ch
+                    text:""
+            GridLayout:
+                rows:2
+                Label:
+                    text:"Аугментации"
+                    font_size: 18
+                    bold: True
+                    italic: True
+                Label:
+                    id: aug
+                    text:""
+            GridLayout:
+                rows:2
+                Label:
+                    padding_bottom: 20
+                    text:"Характер"
+                    font_size: 18
+                    bold: True
+                    italic: True
+                Label:
+                    id: char
+                    text:""
+            BoxLayout:
+                size_hint: .5, .5
+                padding: 20
+                Button:
+                    text: "Сгенерировать"
+                    font_size: 30
+                    on_release:
+                        root.gen()
+
+    TabbedPanelItem:
+        text: 'Генератор противников'
+        BoxLayout:
+            Label:
+                text: 'В разработке'
+    TabbedPanelItem:
+        text: 'Генератор группировок'
+        BoxLayout:
+            Label:
+                text: 'В разработке'
