@@ -1,0 +1,56 @@
+
+
+
+<Container>:
+    rows: 32
+    name:name
+    temp:temp
+    ch:ch
+    aug: aug
+    char:char
+    AnchorLayout:
+        Label:
+            text: "Генератор неигровых персонажей"
+
+    GridLayout:
+        rows:2
+        Label:
+            text:"Имя"
+        Label:
+            id: name
+            text:""
+    GridLayout:
+        rows:2
+        Label:
+            text:"Темперамент"
+        Label:
+            id: temp
+            text:""
+    GridLayout:
+        rows:2
+        Label:
+            text:"Характеристики"
+        Label:
+            id: ch
+            text:""
+    GridLayout:
+        rows:2
+        Label:
+            text:"Аугментации"
+        Label:
+            id: aug
+            text:""
+    GridLayout:
+        rows:2
+        Label:
+            text:"Характер"
+        Label:
+            id: char
+            text:""
+    BoxLayout:
+        padding: 20
+        Button:
+            text: "Сгенерировать"
+            font_size: 40
+            on_release:
+                root.gen()
