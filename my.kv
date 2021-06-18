@@ -11,16 +11,16 @@
 
     TabbedPanelItem:
 
-        text: 'Генератор НПС'
+        text: 'НПС'
         GridLayout:
             rows: 32
             GridLayout:
                 rows:2
                 Label:
                     text:"Имя"
-                    font_size: 18
+
                     bold: True
-                    italic: True                    
+                    italic: True
                 Label:
                     id: name
                     text:""
@@ -30,7 +30,6 @@
                 rows:2
                 Label:
                     text:"Темперамент"
-                    font_size: 18
                     bold: True
                     italic: True
                 Label:
@@ -40,7 +39,6 @@
                 rows:2
                 Label:
                     text:"Характеристики"
-                    font_size: 18
                     bold: True
                     italic: True
                 Label:
@@ -50,7 +48,6 @@
                 rows:2
                 Label:
                     text:"Аугментации"
-                    font_size: 18
                     bold: True
                     italic: True
                 Label:
@@ -61,7 +58,6 @@
                 Label:
                     padding_bottom: 20
                     text:"Характер"
-                    font_size: 18
                     bold: True
                     italic: True
                 Label:
@@ -72,17 +68,16 @@
                 padding: 20
                 Button:
                     text: "Сгенерировать"
-                    font_size: 30
                     on_release:
                         root.gen()
 
     TabbedPanelItem:
-        text: 'Генератор противников'
+        text: 'Противники'
         BoxLayout:
             Label:
                 text: 'В разработке'
     TabbedPanelItem:
-        text: 'Генератор группировок'
+        text: 'Группировки'
         BoxLayout:
             Label:
                 text: 'В разработке'
