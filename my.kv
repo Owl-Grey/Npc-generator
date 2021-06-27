@@ -93,14 +93,10 @@
         text: 'Противники'
         GridLayout:
             rows:35
+
             GridLayout:
-                rows:34
-                Label:                    
-                    id:pr
-                    text:""
-            GridLayout:
-                cols:5
-                size_hint: 1,0.1
+                cols:3
+                size_hint: 1,0.3
                 padding: 10
                 Button:
                     background_color: (0.0, 255.0, 0.0, 1.0)
@@ -132,6 +128,18 @@
                     text: "Невозможно"
                     on_release:
                         root.genp(5)
+            GridLayout:
+                rows:30
+                ScrollView
+                    do_scroll_x: False
+                    do_scroll_y: True
+                    Label:
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        text_size: self.width, None
+                        padding: 10, 10
+                        id:pr
+                        text:""
 
     TabbedPanelItem:
         text: 'Боссы'

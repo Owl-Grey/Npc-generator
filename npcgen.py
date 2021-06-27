@@ -60,52 +60,48 @@ class InsPanel(TabbedPanel):
         return ch
 
     def navs(self,hr):
-        nav="  "
+        nav=""
         if hr<3:
-            numb=randint(1,len(navs)-1)
-            nav+=navs[numb]
-            x=randint(1,2)
-            nav+=":"+ str(x) + " "
+            for i in range(len(navs)):
+                nav+="  " + navs[i]
+                x=randint(1,2)
+                nav+=":"+ str(x) + "\n"
         elif hr==3:
-            l=randint(1,2)
-            for i in range(l):
-                numb=randint(1,len(navs)-1)
-                nav+=navs[numb]
+            for i in range(len(navs)):
+                nav+="  " + navs[i]
                 x=randint(1,3)
-                nav+=": "+ str(x) + " "
+                nav+=": "+ str(x) + "\n"
         elif hr>3:
-            l=randint(1,3)
-            for i in range(l):
-                numb=randint(1,len(navs)-1)
-                nav+=navs[numb]
+            for i in range(len(navs)):
+                nav+="  " + navs[i]
                 x=randint(1,5)
-                nav+=":"+ str(x) + " "
+                nav+=":"+ str(x) + "\n"
         return nav
 
 
     def aug(self,hr):
-        augp=""
+        augp="  Аугментации:"
         if hr<3:
             numb=randint(0,1)
         elif hr==3:
             numb=randint(1,2)
         elif hr>3:
             numb=randint(2,4)
-        print(numb)
+
         if numb == 0:
-            augp+="  Имплантов не обнаружено"
+            augp+="Не найдены"
         else:
 
             for i in range(numb):
                 part=randint(0, len(aug)-1)
                 if part == 0:
-                    name = "\n  Руки: "
+                    name = "\n   Руки: "
                 elif part == 1:
-                    name="\n  Голова: "
+                    name="\n   Голова: "
                 elif part == 2:
-                    name="\n  Ноги: "
+                    name="\n   Ноги: "
                 elif part == 3:
-                    name="\n  Тело: "
+                    name="\n   Тело: "
                 aug_i=randint(0, len(aug[part])-1)
                 augp+= str(name) + str(aug[part][aug_i])
         return augp
@@ -117,9 +113,9 @@ class InsPanel(TabbedPanel):
             nav=self.navs(1)
             augp=self.aug(1)
             if i==0:
-                self.pr.text= str(i+1)+ ". " + str(ch) + " | \n" + str(nav) + " | \n" + str(augp)
+                self.pr.text= str(i+1)+ ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
             else:
-                self.pr.text+= "\n" + "\n" + str(i+1) + ". " + str(ch) + " | \n" + str(nav) + " | \n" + str(augp)
+                self.pr.text+= "\n" + "\n" + str(i+1) + ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
 
     def light(self):
         numb=randint(1,3)
@@ -128,9 +124,9 @@ class InsPanel(TabbedPanel):
             nav=self.navs(2)
             augp=self.aug(2)
             if i==0:
-                self.pr.text= str(i+1)+ ". " + str(ch) + " | \n" + str(nav) + " | \n" + str(augp)
+                self.pr.text= str(i+1)+ ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
             else:
-                self.pr.text+= "\n" + "\n" + str(i+1) + ". " + str(ch) + " | \n" + str(nav) + " | \n" + str(augp)
+                self.pr.text+= "\n" + "\n" + str(i+1) + ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
 
     def norm(self):
         numb=randint(1,4)
@@ -139,9 +135,9 @@ class InsPanel(TabbedPanel):
             nav=self.navs(3)
             augp=self.aug(3)
             if i==0:
-                self.pr.text= str(i+1)+ ". " + str(ch) + " | \n" + str(nav) + " | \n" + str(augp)
+                self.pr.text= str(i+1)+ ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
             else:
-                self.pr.text+= "\n" + "\n" + str(i+1) + ". " + str(ch) + " | \n" + str(nav) + " | \n" + str(augp)
+                self.pr.text+= "\n" + "\n" + str(i+1) + ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
 
     def hard(self):
         numb=randint(1,4)
@@ -150,9 +146,9 @@ class InsPanel(TabbedPanel):
             nav=self.navs(4)
             augp=self.aug(4)
             if i==0:
-                self.pr.text= str(i+1)+ ". " + str(ch) + " | \n" + str(nav) + " | \n" + str(augp)
+                self.pr.text= str(i+1)+ ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
             else:
-                self.pr.text+= "\n" + "\n" + str(i+1) + ". " + str(ch) + " | \n" + str(nav) + " | \n" + str(augp)
+                self.pr.text+= "\n" + "\n" + str(i+1) + ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
 
 
     def imp(self):
@@ -162,9 +158,9 @@ class InsPanel(TabbedPanel):
             nav=self.navs(5)
             augp=self.aug(5)
             if i==0:
-                self.pr.text= str(i+1)+ ". " + str(ch) + " | \n" + str(nav) + " | \n" + str(augp)
+                self.pr.text= str(i+1)+ ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
             else:
-                self.pr.text+= "\n" + "\n" + str(i+1) + ". " + str(ch) + " | \n" + str(nav) + " | \n" + str(augp)
+                self.pr.text+= "\n" + "\n" + str(i+1) + ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
 
 
 
