@@ -93,7 +93,6 @@
         text: 'Противники'
         GridLayout:
             rows:35
-
             GridLayout:
                 cols:3
                 size_hint: 1,0.3
@@ -134,6 +133,7 @@
                     do_scroll_x: False
                     do_scroll_y: True
                     Label:
+                        haling: 'middle'
                         size_hint_y: None
                         height: self.texture_size[1]
                         text_size: self.width, None
