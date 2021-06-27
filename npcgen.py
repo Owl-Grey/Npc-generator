@@ -19,7 +19,7 @@ aug = [["Протезирование","Порт для подключения �
 ["Протезирование ","Проект «Скороход» ","Попрыгунчик" ,"Падение ангела ","Проект «Мгновение»" ,"Проект «Тихоход» ","Сканер приближения ","Проект «Повелитель» ","Скрытый клинок","Проект «Шагоход» ","Проект «Восхождение» доп. модуль","Генератор феромонов" ],
 ["Проект «Искра»","Радиоактивный протектор","Молниеотвод","Огнетушитель","Высокий иммунитет","Проект «Второй шанс»","Проект «Защитник»","Адреналиновый контроллер","Проект «Икар» ","Функциональный расширитель","Проект «Перехват»","Второе дыхание","Проект «Хамелеон","Активный камуфляж ","Видеокамера ","Око за око","Проект «Кокон»"]]
 characters=["Храбрый","Спокойствие","Целомудренный","Прилежный","Непостоянный","Прощение","Щедрый","Общительный","Честный","Скромный","Терпеливый","Умеренный","Ревностный","Сострадательный","Гневный","Похотливый","Честолюбивый","Ленивый","Упрямый","Жадный","Застенчивый","Лживый","Высокомерный","Произвольный","Нетерпеливый","Прожорливый","Параноик","Циничный","Бездушный","Садистский"]
-
+navs=["Холодное оружие","Огнестрельное оружие","Ближний бой"]
 
 
 
@@ -42,31 +42,161 @@ characters=["Храбрый","Спокойствие","Целомудренны�
 #     ag=randint(1, l)
 #     print("  Проворство: ",ag)
 
+class InsPanel(TabbedPanel):
+    def chp(self):
+        ch=""
+        l=18
+        pw=randint(1,10)
+        ch="Мощь: "+ str(pw)
+        l-=pw
+        if l>10:
+            itl=randint(1,10)
+        else:
+            itl=randint(1, l-1)
+        ch+="\n  Скепсис: "+ str(itl)
+        l-=itl
+        ag=randint(1, l)
+        ch+="\n  Проворство: "+ str(ag)
+        return ch
 
-def rand_aug():
-    print("Импланты:")
-    numb=randint(0,3)
-    if numb == 0:
-        print("Имплантов не обнаружено")
-    else:
+    def navs(self,hr):
+        nav="  "
+        if hr<3:
+            numb=randint(1,len(navs)-1)
+            nav+=navs[numb]
+            x=randint(1,2)
+            nav+=":"+ str(x) + " "
+        elif hr==3:
+            l=randint(1,2)
+            for i in range(l):
+                numb=randint(1,len(navs)-1)
+                nav+=navs[numb]
+                x=randint(1,3)
+                nav+=": "+ str(x) + " "
+        elif hr>3:
+            l=randint(1,3)
+            for i in range(l):
+                numb=randint(1,len(navs)-1)
+                nav+=navs[numb]
+                x=randint(1,5)
+                nav+=":"+ str(x) + " "
+        return nav
+
+
+    def aug(self,hr):
+        augp=""
+        if hr<3:
+            numb=randint(0,1)
+        elif hr==3:
+            numb=randint(1,2)
+        elif hr>3:
+            numb=randint(2,4)
+        print(numb)
+        if numb == 0:
+            augp+="  Имплантов не обнаружено"
+        else:
+
+            for i in range(numb):
+                part=randint(0, len(aug)-1)
+                if part == 0:
+                    name = "\n  Руки: "
+                elif part == 1:
+                    name="\n  Голова: "
+                elif part == 2:
+                    name="\n  Ноги: "
+                elif part == 3:
+                    name="\n  Тело: "
+                aug_i=randint(0, len(aug[part])-1)
+                augp+= str(name) + str(aug[part][aug_i])
+        return augp
+
+    def ez(self):
+        numb=randint(1,2)
         for i in range(numb):
-            part=randint(0, len(aug)-1)
-            if part == 0:
-                name = "Руки: "
-            elif part == 1:
-                name="Голова: "
-            elif part == 2:
-                name="Ноги: "
-            elif part == 3:
-                name="Тело: "
-            aug_i=randint(0, len(aug[part])-1)
-            print(name, aug[part][aug_i])
+            ch=self.chp()
+            nav=self.navs(1)
+            augp=self.aug(1)
+            if i==0:
+                self.pr.text= str(i+1)+ ". " + str(ch) + " | \n" + str(nav) + " | \n" + str(augp)
+            else:
+                self.pr.text+= "\n" + "\n" + str(i+1) + ". " + str(ch) + " | \n" + str(nav) + " | \n" + str(augp)
 
-def rand_character():
-    numb=randint(2,4)
-    for i in range(numb):
-        ch=randint(0, len(characters)-1)
-        print(characters[ch])
+    def light(self):
+        numb=randint(1,3)
+        for i in range(numb):
+            ch=self.chp()
+            nav=self.navs(2)
+            augp=self.aug(2)
+            if i==0:
+                self.pr.text= str(i+1)+ ". " + str(ch) + " | \n" + str(nav) + " | \n" + str(augp)
+            else:
+                self.pr.text+= "\n" + "\n" + str(i+1) + ". " + str(ch) + " | \n" + str(nav) + " | \n" + str(augp)
+
+    def norm(self):
+        numb=randint(1,4)
+        for i in range(numb):
+            ch=self.chp()
+            nav=self.navs(3)
+            augp=self.aug(3)
+            if i==0:
+                self.pr.text= str(i+1)+ ". " + str(ch) + " | \n" + str(nav) + " | \n" + str(augp)
+            else:
+                self.pr.text+= "\n" + "\n" + str(i+1) + ". " + str(ch) + " | \n" + str(nav) + " | \n" + str(augp)
+
+    def hard(self):
+        numb=randint(1,4)
+        for i in range(numb):
+            ch=self.chp()
+            nav=self.navs(4)
+            augp=self.aug(4)
+            if i==0:
+                self.pr.text= str(i+1)+ ". " + str(ch) + " | \n" + str(nav) + " | \n" + str(augp)
+            else:
+                self.pr.text+= "\n" + "\n" + str(i+1) + ". " + str(ch) + " | \n" + str(nav) + " | \n" + str(augp)
+
+
+    def imp(self):
+        numb=randint(1,5)
+        for i in range(numb):
+            ch=self.chp()
+            nav=self.navs(5)
+            augp=self.aug(5)
+            if i==0:
+                self.pr.text= str(i+1)+ ". " + str(ch) + " | \n" + str(nav) + " | \n" + str(augp)
+            else:
+                self.pr.text+= "\n" + "\n" + str(i+1) + ". " + str(ch) + " | \n" + str(nav) + " | \n" + str(augp)
+
+
+
+
+
+
+    def genp(self, l):
+        if l==1:
+            self.ez()
+        elif l==2:
+            self.light()
+        elif l==3:
+            self.norm()
+        elif l==4:
+            self.hard()
+        elif l==5:
+            self.imp()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

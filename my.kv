@@ -18,7 +18,6 @@
                 rows:2
                 Label:
                     text:"Имя"
-
                     bold: True
                     italic: True
                 Label:
@@ -74,10 +73,68 @@
     TabbedPanelItem:
         text: 'Противники'
         BoxLayout:
-            Label:
-                text: 'В разработке'
+            InsPanel:
     TabbedPanelItem:
         text: 'Группировки'
+        BoxLayout:
+            Label:
+                text: 'В разработке'
+
+
+
+
+
+
+<InsPanel>
+    pr:pr
+    do_default_tab: False
+    tab_width:537
+    TabbedPanelItem:
+        text: 'Противники'
+        GridLayout:
+            rows:35
+            GridLayout:
+                rows:34
+                Label:                    
+                    id:pr
+                    text:""
+            GridLayout:
+                cols:5
+                size_hint: 1,0.1
+                padding: 10
+                Button:
+                    background_color: (0.0, 255.0, 0.0, 1.0)
+                    bold: True
+                    text: "Оч. Легко"
+                    on_release:
+                        root.genp(1)
+                Button:
+                    background_color: (0.0, 255.0, 0.0, 0.8)
+                    bold: True
+                    text: "Легко"
+                    on_release:
+                        root.genp(2)
+                Button:
+                    background_color: (0.0, 255.0, 255.0, 0.8)
+                    bold: True
+                    text: "Нормально"
+                    on_release:
+                        root.genp(3)
+                Button:
+                    background_color: (255.0, 0.0, 0.0, 1.0)
+                    bold: True
+                    text: "Сложно"
+                    on_release:
+                        root.genp(4)
+                Button:
+                    background_color: (128.0, 0.0, 0.0, 0.8)
+                    bold: True
+                    text: "Невозможно"
+                    on_release:
+                        root.genp(5)
+
+    TabbedPanelItem:
+        text: 'Боссы'
         BoxLayout:
             Label:
                 text: 'В разработке'
