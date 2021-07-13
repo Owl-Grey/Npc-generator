@@ -3,28 +3,61 @@
 <Container>:
     name:name
     temp:temp
-    ch:ch
+    ct:ct
+    pw:pw
+    itl:itl
+    ag:ag
     aug: aug
     char:char
     do_default_tab: False
     tab_width:358
 
     TabbedPanelItem:
-
         text: 'НПС'
         GridLayout:
             rows: 32
             GridLayout:
-                rows:2
+                cols:2
                 Label:
-                    text:"Имя"
+                    id:ct
+                    text:""
                     bold: True
                     italic: True
                 Label:
                     id: name
                     text:""
-
-
+            GridLayout:
+                cols:3
+                GridLayout:
+                    rows:2
+                    Label:
+                        text:"Мощь"
+                        bold: True
+                        italic: True
+                    Label:
+                        font_size: '50'
+                        id: pw
+                        text:""
+                GridLayout:
+                    rows:2
+                    Label:
+                        text:"Скепсис"
+                        bold: True
+                        italic: True
+                    Label:
+                        font_size: '50'
+                        id: itl
+                        text:""
+                GridLayout:
+                    rows:2
+                    Label:
+                        text:"Проворство"
+                        bold: True
+                        italic: True
+                    Label:
+                        font_size: '50'
+                        id: ag
+                        text:""
             GridLayout:
                 rows:2
                 Label:
@@ -33,15 +66,6 @@
                     italic: True
                 Label:
                     id: temp
-                    text:""
-            GridLayout:
-                rows:2
-                Label:
-                    text:"Характеристики"
-                    bold: True
-                    italic: True
-                Label:
-                    id: ch
                     text:""
             GridLayout:
                 rows:2
@@ -84,12 +108,12 @@
 
 
 
-
 <InsPanel>
-    pr:pr
+    # pr:pr
     do_default_tab: False
     tab_width:537
     TabbedPanelItem:
+        id: tab
         text: 'Противники'
         GridLayout:
             rows:35
@@ -128,21 +152,33 @@
                     on_release:
                         root.genp(5)
             GridLayout:
-                rows:30
+                id:grd1
+                rows:5
                 ScrollView
                     do_scroll_x: False
                     do_scroll_y: True
-                    Label:
-                        haling: 'middle'
-                        size_hint_y: None
-                        height: self.texture_size[1]
-                        text_size: self.width, None
-                        padding: 10, 10
-                        id:pr
-                        text:""
+                    # Label:
+                    #     haling: 'middle'
+                    #     size_hint_y: None
+                    #     height: self.texture_size[1]
+                    #     text_size: self.width, None
+                    #     padding: 10, 10
+                    #     id:pr
+                    #     text:""
 
     TabbedPanelItem:
         text: 'Боссы'
         BoxLayout:
             Label:
                 text: 'В разработке'
+
+
+
+<Pop@Popup>
+    BoxLayout:
+        orientation: 'vertical'
+        
+        BoxLayout:
+            Button:
+                text: 'Закрыть'
+                on_press: root.dismiss()

@@ -5,15 +5,19 @@ from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
+from kivy.uix.button import ButtonBehavior
+from kivy.uix.togglebutton import ToggleButton, ToggleButtonBehavior
 from kivy.core.window import Window
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.tabbedpanel import TabbedPanel
+from kivy.properties import StringProperty, ObjectProperty
+from kivy.uix.popup import Popup
 from kivy.lang import Builder
 
 
 
-temp = ["Флегма","Сангва","Меланха","Холера"]
+temp = ["Флегматик","Сангвинник","Меланхолик","Холерик"]
 aug = [["Протезирование","Порт для подключения к сетевым устройствам", "Железный кулак","Стабилизатор клинка","Баллистический стабилизатор","Скрытый клинок","Дополнительный огнестрел в руках","Мышечный стабилизатор","Мышечный парализатор","Проект «Восхождение»","Фонарь","Проект «Паук»","Разрыватель материи","Укротитель замков","Помощник хирурга"],
 ["Глазные импланты","Вероятностный компьютер","Проект «Альманах»","Тактический анализатор","Проект «Фрейд»","Гоночный сопроцессор","Церебральный ускоритель","Проект «Адреналин»","Проект «Смотритель»","Проект «Пацифист»","Проект «Блэкаут»" ,"Удаленный доступ" ,"Удаленный доступ v1.2" ,"Проект «Марионетка»" ,"Баллистический компьютер" ,"Локальный криптободборщик" ,"Проект «Фрейд» v1.2" ,"Проект «Просвет»" ,"Проект «Ночь»" ,"Проект «След»" ,"Змеиный укус","Проект «Змея»"],
 ["Протезирование ","Проект «Скороход» ","Попрыгунчик" ,"Падение ангела ","Проект «Мгновение»" ,"Проект «Тихоход» ","Сканер приближения ","Проект «Повелитель» ","Скрытый клинок","Проект «Шагоход» ","Проект «Восхождение» доп. модуль","Генератор феромонов" ],
@@ -21,7 +25,7 @@ aug = [["Протезирование","Порт для подключения �
 characters=["Храбрый","Спокойствие","Целомудренный","Прилежный","Непостоянный","Прощение","Щедрый","Общительный","Честный","Скромный","Терпеливый","Умеренный","Ревностный","Сострадательный","Гневный","Похотливый","Честолюбивый","Ленивый","Упрямый","Жадный","Застенчивый","Лживый","Высокомерный","Произвольный","Нетерпеливый","Прожорливый","Параноик","Циничный","Бездушный","Садистский"]
 navs=["Холодное оружие","Огнестрельное оружие","Ближний бой"]
 
- 
+
 
 # def rand_temp():
 #     temp_i=randint(0, len(temp)-1)
@@ -41,6 +45,15 @@ navs=["Холодное оружие","Огнестрельное оружие",
 #     l-=itl
 #     ag=randint(1, l)
 #     print("  Проворство: ",ag)
+class Pop(Popup):
+    title = StringProperty()
+
+    def __init__(self, title, **kwargs):
+        super(Pop, self).__init__(**kwargs)
+        self.set_description(title)
+
+    def set_description(self, title):
+        self.title = title
 
 class InsPanel(TabbedPanel):
     def chp(self):
@@ -78,6 +91,10 @@ class InsPanel(TabbedPanel):
                 nav+=":"+ str(x) + "\n"
         return nav
 
+    def clk(self,instance_toggle_button):
+        instance_toggle_button.state="normal"
+        popup = Pop('hello')
+        popup.open()
 
     def aug(self,hr):
         augp="  Аугментации:"
@@ -106,16 +123,52 @@ class InsPanel(TabbedPanel):
                 augp+= str(name) + str(aug[part][aug_i])
         return augp
 
+
+
+    # def ez(self):
+    #
+    #     numb=randint(1,2)
+    #     for i in range(numb):
+    #         ch=self.chp()
+    #         nav=self.navs(1)
+    #         augp=self.aug(1)
+    #         if i==0:
+    #             self.pr.text= str(i+1)+ ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
+    #         else:
+    #             self.pr.text+= "\n" + "\n" + str(i+1) + ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
+
+
+
     def ez(self):
-        numb=randint(1,2)
+        numb=randint(1,5)
         for i in range(numb):
             ch=self.chp()
             nav=self.navs(1)
             augp=self.aug(1)
-            if i==0:
-                self.pr.text= str(i+1)+ ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
-            else:
-                self.pr.text+= "\n" + "\n" + str(i+1) + ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
+            ch= str(i+1)+ ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
+
+            self.ids.grd1.add_widget(
+                ToggleButton(
+                    text=f'Кнопка {i}',
+                    group=i,
+                    on_press=self.clk,
+                    size_hint_y=None,
+                    height=36,
+                    state='normal'
+                )
+            )
+
+
+
+
+
+            # add_widget(
+            #     Button(
+            #         text=str(i+1),
+            #         group = i,
+            #         size_hint=(0.3,0.3),
+            #         on_press=self.clk
+            #         ))
 
     def light(self):
         numb=randint(1,3)
@@ -163,10 +216,6 @@ class InsPanel(TabbedPanel):
                 self.pr.text+= "\n" + "\n" + str(i+1) + ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
 
 
-
-
-
-
     def genp(self, l):
         if l==1:
             self.ez()
@@ -178,21 +227,6 @@ class InsPanel(TabbedPanel):
             self.hard()
         elif l==5:
             self.imp()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -230,22 +264,23 @@ class Container(TabbedPanel):
     def rand_ch(self):
         l=18
         pw=randint(1,10)
-        self.ch.text="Мощь: "+ str(pw)
+        self.pw.text=str(pw)
         l-=pw
         if l>10:
             itl=randint(1,10)
         else:
             itl=randint(1, l-1)
-        self.ch.text+="\nСкепсис: "+ str(itl)
+        self.itl.text=str(itl)
         l-=itl
         ag=randint(1, l)
-        self.ch.text+="\nПроворство: "+ str(ag)
+        self.ag.text=str(ag)
     def rand_temp(self):
         temp_i=randint(0, len(temp)-1)
         self.temp.text = str(temp[temp_i])
     def rand_name(self):
         rn = RussianNames(count=1, patronymic=False).get_person()
         self.name.text = str(rn)
+        self.ct.text="Имя"
     def gen(self, *args):
         self.rand_name()
         self.rand_temp()
