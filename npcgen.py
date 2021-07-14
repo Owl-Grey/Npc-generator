@@ -160,7 +160,7 @@ class InsPanel(TabbedPanel):
                     group=i,
                     on_press=self.clk,
                     size_hint_y=None,
-                    height=36,
+                    height=150,
                     state='normal'
                 )
             )
@@ -183,7 +183,7 @@ class InsPanel(TabbedPanel):
                     group=i,
                     on_press=self.clk,
                     size_hint_y=None,
-                    height=36,
+                    height=150,
                     state='normal'
                 )
             )
@@ -205,7 +205,7 @@ class InsPanel(TabbedPanel):
                     group=i,
                     on_press=self.clk,
                     size_hint_y=None,
-                    height=36,
+                    height=150,
                     state='normal'
                 )
             )
@@ -227,7 +227,7 @@ class InsPanel(TabbedPanel):
                     group=i,
                     on_press=self.clk,
                     size_hint_y=None,
-                    height=36,
+                    height=150,
                     state='normal'
                 )
             )
@@ -249,7 +249,7 @@ class InsPanel(TabbedPanel):
                     group=i,
                     on_press=self.clk,
                     size_hint_y=None,
-                    height=36,
+                    height=150,
                     state='normal'
                 )
             )

@@ -35,7 +35,7 @@
                         bold: True
                         italic: True
                     Label:
-                        font_size: '50'
+                        font_size: '100'
                         id: pw
                         text:""
                 GridLayout:
@@ -45,7 +45,7 @@
                         bold: True
                         italic: True
                     Label:
-                        font_size: '50'
+                        font_size: '100'
                         id: itl
                         text:""
                 GridLayout:
@@ -55,7 +55,7 @@
                         bold: True
                         italic: True
                     Label:
-                        font_size: '50'
+                        font_size: '100'
                         id: ag
                         text:""
             GridLayout:
@@ -153,6 +153,7 @@
             GridLayout:
                 id:grd1
                 rows:6
+                padding:10
 
     TabbedPanelItem:
         text: 'Боссы'
@@ -181,10 +182,10 @@
                 padding:20
                 rows:5
                 size_hint_y: None
-                row_default_height: '90px'
+                row_default_height: '200px'
                 height: self.minimum_height
                 Label:
-                    font_size: '30'
+                    font_size: '75'
                     text:"Характеристики"
                     bold: True
                     italic: True
@@ -197,7 +198,7 @@
                             bold: True
                             italic: True
                         Label:
-                            font_size: '50'
+                            font_size: '100'
                             id: pw1
                             text:""
                     GridLayout:
@@ -207,7 +208,7 @@
                             bold: True
                             italic: True
                         Label:
-                            font_size: '50'
+                            font_size: '100'
                             id: itl1
                             text:""
                     GridLayout:
@@ -217,11 +218,11 @@
                             bold: True
                             italic: True
                         Label:
-                            font_size: '50'
+                            font_size: '100'
                             id: ag1
                             text:""
                 Label:
-                    font_size: '30'
+                    font_size: '75'
                     text:"Боевые навыки"
                     bold: True
                     italic: True
@@ -230,21 +231,21 @@
                     GridLayout:
                         rows:2
                         Label:
-                            text:"Холодное оружие"
+                            text:"Холодное"
                             bold: True
                             italic: True
                         Label:
-                            font_size: '50'
+                            font_size: '100'
                             id: cold
                             text:""
                     GridLayout:
                         rows:2
                         Label:
-                            text:"Огнестрельное оружие"
+                            text:"Огнестрельное"
                             bold: True
                             italic: True
                         Label:
-                            font_size: '50'
+                            font_size: '100'
                             id: gun
                             text:""
                     GridLayout:
@@ -254,7 +255,7 @@
                             bold: True
                             italic: True
                         Label:
-                            font_size: '50'
+                            font_size: '100'
                             id: hand
                             text:""
                 GridLayout:
@@ -269,7 +270,7 @@
         GridLayout:
             padding:10
             rows:1
-            size_hint: 1,0.2
+            size_hint: 1,0.1
             Button:
                 text: 'Закрыть'
                 on_press: root.dismiss()
