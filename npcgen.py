@@ -1,4 +1,4 @@
-from random import randint
+from random import randint,random
 from russian_names import RussianNames
 from kivy.app import App
 from kivy.uix.label import Label
@@ -54,9 +54,9 @@ class Pop(Popup):
         self.set_description(title)
 
     def set_description(self, title):
-
+        x=""
         i=int(title)
-        x=str(int(title)+1)
+        x+="Противник " + str(int(title)+1)
         self.title = x
         self.pw1.text=str(pr_arr[i][0][0])
         self.itl1.text=str(pr_arr[i][0][1])
@@ -75,16 +75,15 @@ class InsPanel(TabbedPanel):
 
 
     def chp(self):
-        ch=""
-        l=18
-        pw=randint(1,10)
-        l-=pw
-        if l>10:
-            itl=randint(1,10)
-        else:
-            itl=randint(1, l-1)
-        l-=itl
-        ag=randint(1, l)
+        x=random()
+        y=random()
+        z=random()
+        pw=x/(x+y+z)*15
+        itl=y/(x+y+z)*15
+        ag=z/(x+y+z)*15
+        pw=round(pw)+1
+        itl=round(itl)+1
+        ag=round(ag)+1
         return pw, itl, ag
 
     def navs(self,hr):
@@ -156,7 +155,7 @@ class InsPanel(TabbedPanel):
             pr_arr.append(pr)
             self.ids.grd1.add_widget(
                 ToggleButton(
-                    text=f'Кнопка {i+1}',
+                    text=f'Противник {i+1}',
                     group=i,
                     on_press=self.clk,
                     size_hint_y=None,
@@ -179,7 +178,7 @@ class InsPanel(TabbedPanel):
             pr_arr.append(pr)
             self.ids.grd1.add_widget(
                 ToggleButton(
-                    text=f'Кнопка {i+1}',
+                    text=f'Противник {i+1}',
                     group=i,
                     on_press=self.clk,
                     size_hint_y=None,
@@ -201,7 +200,7 @@ class InsPanel(TabbedPanel):
             pr_arr.append(pr)
             self.ids.grd1.add_widget(
                 ToggleButton(
-                    text=f'Кнопка {i+1}',
+                    text=f'Противник {i+1}',
                     group=i,
                     on_press=self.clk,
                     size_hint_y=None,
@@ -223,7 +222,7 @@ class InsPanel(TabbedPanel):
             pr_arr.append(pr)
             self.ids.grd1.add_widget(
                 ToggleButton(
-                    text=f'Кнопка {i+1}',
+                    text=f'Противник {i+1}',
                     group=i,
                     on_press=self.clk,
                     size_hint_y=None,
@@ -245,7 +244,7 @@ class InsPanel(TabbedPanel):
             pr_arr.append(pr)
             self.ids.grd1.add_widget(
                 ToggleButton(
-                    text=f'Кнопка {i+1}',
+                    text=f'Противник {i+1}',
                     group=i,
                     on_press=self.clk,
                     size_hint_y=None,
@@ -255,10 +254,8 @@ class InsPanel(TabbedPanel):
             )
 
     def genp(self, l):
-        print(pr_arr)
         self.ids.grd1.clear_widgets()
         pr_arr.clear()
-        print(pr_arr)
         if l==1:
             self.ez()
         elif l==2:
@@ -304,17 +301,17 @@ class Container(TabbedPanel):
                 else:
                     self.aug.text+= "\n" + str(name) + str(aug[part][aug_i])
     def rand_ch(self):
-        l=18
-        pw=randint(1,10)
+        x=random()
+        y=random()
+        z=random()
+        pw=x/(x+y+z)*15
+        itl=y/(x+y+z)*15
+        ag=z/(x+y+z)*15
+        pw=round(pw)+1
+        itl=round(itl)+1
+        ag=round(ag)+1
         self.pw.text=str(pw)
-        l-=pw
-        if l>10:
-            itl=randint(1,10)
-        else:
-            itl=randint(1, l-1)
         self.itl.text=str(itl)
-        l-=itl
-        ag=randint(1, l)
         self.ag.text=str(ag)
     def rand_temp(self):
         temp_i=randint(0, len(temp)-1)

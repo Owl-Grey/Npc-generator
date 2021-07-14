@@ -150,10 +150,17 @@
                     text: "Невозможно"
                     on_release:
                         root.genp(5)
-            GridLayout:
-                id:grd1
-                rows:6
-                padding:10
+            ScrollView:
+                size: self.size
+                do_scroll_x: False
+                do_scroll_y: True
+                GridLayout:
+                    id:grd1
+                    cols:1
+                    padding:20
+                    size_hint_y: None
+                    row_default_height: '160px'
+                    height: self.minimum_height
 
     TabbedPanelItem:
         text: 'Боссы'
@@ -180,7 +187,7 @@
             do_scroll_y: True
             GridLayout:
                 padding:20
-                rows:5
+                cols:1
                 size_hint_y: None
                 row_default_height: '200px'
                 height: self.minimum_height
