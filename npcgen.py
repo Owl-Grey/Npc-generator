@@ -24,6 +24,7 @@ aug = [["Протезирование","Порт для подключения �
 ["Проект «Искра»","Радиоактивный протектор","Молниеотвод","Огнетушитель","Высокий иммунитет","Проект «Второй шанс»","Проект «Защитник»","Адреналиновый контроллер","Проект «Икар» ","Функциональный расширитель","Проект «Перехват»","Второе дыхание","Проект «Хамелеон","Активный камуфляж ","Видеокамера ","Око за око","Проект «Кокон»"]]
 characters=["Храбрый","Спокойствие","Целомудренный","Прилежный","Непостоянный","Прощение","Щедрый","Общительный","Честный","Скромный","Терпеливый","Умеренный","Ревностный","Сострадательный","Гневный","Похотливый","Честолюбивый","Ленивый","Упрямый","Жадный","Застенчивый","Лживый","Высокомерный","Произвольный","Нетерпеливый","Прожорливый","Параноик","Циничный","Бездушный","Садистский"]
 navs=["Холодное оружие","Огнестрельное оружие","Ближний бой"]
+pr_arr=["hello"]
 
 
 
@@ -53,51 +54,67 @@ class Pop(Popup):
         self.set_description(title)
 
     def set_description(self, title):
-        self.title = title
+
+        i=int(title)
+        x=str(int(title)+1)
+        self.title = x
+        self.pw1.text=str(pr_arr[i][0][0])
+        self.itl1.text=str(pr_arr[i][0][1])
+        self.ag1.text=str(pr_arr[i][0][2])
+        self.augpr.text=str(pr_arr[i][2])
+        self.cold.text=str(pr_arr[i][1][0])
+        self.gun.text=str(pr_arr[i][1][1])
+        self.hand.text=str(pr_arr[i][1][2])
 
 class InsPanel(TabbedPanel):
+
+    def clk(self,instance_toggle_button):
+        instance_toggle_button.state="normal"
+        popup = Pop(str(instance_toggle_button.group))
+        popup.open()
+
+
     def chp(self):
         ch=""
         l=18
         pw=randint(1,10)
-        ch="Мощь: "+ str(pw)
         l-=pw
         if l>10:
             itl=randint(1,10)
         else:
             itl=randint(1, l-1)
-        ch+="\n  Скепсис: "+ str(itl)
         l-=itl
         ag=randint(1, l)
-        ch+="\n  Проворство: "+ str(ag)
-        return ch
+        return pw, itl, ag
 
     def navs(self,hr):
         nav=""
         if hr<3:
-            for i in range(len(navs)):
-                nav+="  " + navs[i]
-                x=randint(1,2)
-                nav+=":"+ str(x) + "\n"
+            x=randint(1,2)
+            cold=x
+            x=randint(1,2)
+            gun=x
+            x=randint(1,2)
+            hand=x
         elif hr==3:
-            for i in range(len(navs)):
-                nav+="  " + navs[i]
-                x=randint(1,3)
-                nav+=": "+ str(x) + "\n"
+            x=randint(1,3)
+            cold=x
+            x=randint(1,3)
+            gun=x
+            x=randint(1,3)
+            hand=x
         elif hr>3:
-            for i in range(len(navs)):
-                nav+="  " + navs[i]
-                x=randint(1,5)
-                nav+=":"+ str(x) + "\n"
-        return nav
+            x=randint(1,5)
+            cold=x
+            x=randint(1,5)
+            gun=x
+            x=randint(1,5)
+            hand=x
+        return cold, gun, hand
 
-    def clk(self,instance_toggle_button):
-        instance_toggle_button.state="normal"
-        popup = Pop('hello')
-        popup.open()
 
     def aug(self,hr):
-        augp="  Аугментации:"
+        augp=""
         if hr<3:
             numb=randint(0,1)
         elif hr==3:
@@ -125,31 +142,21 @@ class InsPanel(TabbedPanel):
 
 
 
-    # def ez(self):
-    #
-    #     numb=randint(1,2)
-    #     for i in range(numb):
-    #         ch=self.chp()
-    #         nav=self.navs(1)
-    #         augp=self.aug(1)
-    #         if i==0:
-    #             self.pr.text= str(i+1)+ ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
-    #         else:
-    #             self.pr.text+= "\n" + "\n" + str(i+1) + ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
-
-
 
     def ez(self):
-        numb=randint(1,5)
+        numb=randint(1,2)
         for i in range(numb):
+            pr=[]
             ch=self.chp()
             nav=self.navs(1)
             augp=self.aug(1)
-            ch= str(i+1)+ ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
-
+            pr.append(ch)
+            pr.append(nav)
+            pr.append(augp)
+            pr_arr.append(pr)
             self.ids.grd1.add_widget(
                 ToggleButton(
-                    text=f'Кнопка {i}',
+                    text=f'Кнопка {i+1}',
                     group=i,
                     on_press=self.clk,
                     size_hint_y=None,
@@ -159,64 +166,99 @@ class InsPanel(TabbedPanel):
             )
 
 
-
-
-
-            # add_widget(
-            #     Button(
-            #         text=str(i+1),
-            #         group = i,
-            #         size_hint=(0.3,0.3),
-            #         on_press=self.clk
-            #         ))
-
     def light(self):
         numb=randint(1,3)
         for i in range(numb):
+            pr=[]
             ch=self.chp()
             nav=self.navs(2)
             augp=self.aug(2)
-            if i==0:
-                self.pr.text= str(i+1)+ ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
-            else:
-                self.pr.text+= "\n" + "\n" + str(i+1) + ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
+            pr.append(ch)
+            pr.append(nav)
+            pr.append(augp)
+            pr_arr.append(pr)
+            self.ids.grd1.add_widget(
+                ToggleButton(
+                    text=f'Кнопка {i+1}',
+                    group=i,
+                    on_press=self.clk,
+                    size_hint_y=None,
+                    height=36,
+                    state='normal'
+                )
+            )
 
     def norm(self):
         numb=randint(1,4)
         for i in range(numb):
+            pr=[]
             ch=self.chp()
             nav=self.navs(3)
             augp=self.aug(3)
-            if i==0:
-                self.pr.text= str(i+1)+ ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
-            else:
-                self.pr.text+= "\n" + "\n" + str(i+1) + ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
+            pr.append(ch)
+            pr.append(nav)
+            pr.append(augp)
+            pr_arr.append(pr)
+            self.ids.grd1.add_widget(
+                ToggleButton(
+                    text=f'Кнопка {i+1}',
+                    group=i,
+                    on_press=self.clk,
+                    size_hint_y=None,
+                    height=36,
+                    state='normal'
+                )
+            )
 
     def hard(self):
         numb=randint(1,4)
         for i in range(numb):
+            pr=[]
             ch=self.chp()
             nav=self.navs(4)
             augp=self.aug(4)
-            if i==0:
-                self.pr.text= str(i+1)+ ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
-            else:
-                self.pr.text+= "\n" + "\n" + str(i+1) + ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
-
+            pr.append(ch)
+            pr.append(nav)
+            pr.append(augp)
+            pr_arr.append(pr)
+            self.ids.grd1.add_widget(
+                ToggleButton(
+                    text=f'Кнопка {i+1}',
+                    group=i,
+                    on_press=self.clk,
+                    size_hint_y=None,
+                    height=36,
+                    state='normal'
+                )
+            )
 
     def imp(self):
         numb=randint(1,5)
         for i in range(numb):
+            pr=[]
             ch=self.chp()
             nav=self.navs(5)
             augp=self.aug(5)
-            if i==0:
-                self.pr.text= str(i+1)+ ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
-            else:
-                self.pr.text+= "\n" + "\n" + str(i+1) + ". " + str(ch) + "\n --------------------------\n" + str(nav) + "--------------------------\n" + str(augp) + "\n\n =========================="
-
+            pr.append(ch)
+            pr.append(nav)
+            pr.append(augp)
+            pr_arr.append(pr)
+            self.ids.grd1.add_widget(
+                ToggleButton(
+                    text=f'Кнопка {i+1}',
+                    group=i,
+                    on_press=self.clk,
+                    size_hint_y=None,
+                    height=36,
+                    state='normal'
+                )
+            )
 
     def genp(self, l):
+        print(pr_arr)
+        self.ids.grd1.clear_widgets()
+        pr_arr.clear()
+        print(pr_arr)
         if l==1:
             self.ez()
         elif l==2:

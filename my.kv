@@ -109,14 +109,13 @@
 
 
 <InsPanel>
-    # pr:pr
     do_default_tab: False
     tab_width:537
     TabbedPanelItem:
         id: tab
         text: 'Противники'
         GridLayout:
-            rows:35
+            rows:2
             GridLayout:
                 cols:3
                 size_hint: 1,0.3
@@ -153,18 +152,7 @@
                         root.genp(5)
             GridLayout:
                 id:grd1
-                rows:5
-                ScrollView
-                    do_scroll_x: False
-                    do_scroll_y: True
-                    # Label:
-                    #     haling: 'middle'
-                    #     size_hint_y: None
-                    #     height: self.texture_size[1]
-                    #     text_size: self.width, None
-                    #     padding: 10, 10
-                    #     id:pr
-                    #     text:""
+                rows:6
 
     TabbedPanelItem:
         text: 'Боссы'
@@ -175,10 +163,113 @@
 
 
 <Pop@Popup>
-    BoxLayout:
-        orientation: 'vertical'
-        
-        BoxLayout:
+    pw1:pw1
+    itl1:itl1
+    ag1:ag1
+    cold:cold
+    gun:gun
+    hand:hand
+    augpr:augpr
+    GridLayout:
+        rows:7
+
+        ScrollView:
+            size: self.size
+            do_scroll_x: False
+            do_scroll_y: True
+            GridLayout:
+                padding:20
+                rows:5
+                size_hint_y: None
+                row_default_height: '90px'
+                height: self.minimum_height
+                Label:
+                    font_size: '30'
+                    text:"Характеристики"
+                    bold: True
+                    italic: True
+                GridLayout:
+                    cols:3
+                    GridLayout:
+                        rows:2
+                        Label:
+                            text:"Мощь"
+                            bold: True
+                            italic: True
+                        Label:
+                            font_size: '50'
+                            id: pw1
+                            text:""
+                    GridLayout:
+                        rows:2
+                        Label:
+                            text:"Скепсис"
+                            bold: True
+                            italic: True
+                        Label:
+                            font_size: '50'
+                            id: itl1
+                            text:""
+                    GridLayout:
+                        rows:2
+                        Label:
+                            text:"Проворство"
+                            bold: True
+                            italic: True
+                        Label:
+                            font_size: '50'
+                            id: ag1
+                            text:""
+                Label:
+                    font_size: '30'
+                    text:"Боевые навыки"
+                    bold: True
+                    italic: True
+                GridLayout:
+                    cols:3
+                    GridLayout:
+                        rows:2
+                        Label:
+                            text:"Холодное оружие"
+                            bold: True
+                            italic: True
+                        Label:
+                            font_size: '50'
+                            id: cold
+                            text:""
+                    GridLayout:
+                        rows:2
+                        Label:
+                            text:"Огнестрельное оружие"
+                            bold: True
+                            italic: True
+                        Label:
+                            font_size: '50'
+                            id: gun
+                            text:""
+                    GridLayout:
+                        rows:2
+                        Label:
+                            text:"Ближний бой"
+                            bold: True
+                            italic: True
+                        Label:
+                            font_size: '50'
+                            id: hand
+                            text:""
+                GridLayout:
+                    rows:2
+                    Label:
+                        text:"Аугментации"
+                        bold: True
+                        italic: True
+                    Label:
+                        id: augpr
+                        text:""
+        GridLayout:
+            padding:10
+            rows:1
+            size_hint: 1,0.2
             Button:
                 text: 'Закрыть'
                 on_press: root.dismiss()
