@@ -99,10 +99,27 @@
         BoxLayout:
             InsPanel:
     TabbedPanelItem:
-        text: 'Группировки'
-        BoxLayout:
-            Label:
-                text: 'В разработке'
+        text: 'Лут'
+        GridLayout:
+            cols:1
+            ScrollView:
+                size: self.size
+                do_scroll_x: False
+                do_scroll_y: True
+                GridLayout:
+                    id:list
+                    cols:1
+
+                    size_hint_y: None
+                    row_default_height: '40px'
+                    height: self.minimum_height
+            BoxLayout:
+                size_hint: .5, .5
+                padding: 20
+                Button:
+                    text: "Сгенерировать"
+                    on_release:
+                        root.rand_guns()
 
 
 
