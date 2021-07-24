@@ -1,6 +1,7 @@
 
 
 <Container>:
+    alls:alls
     name:name
     temp:temp
     ct:ct
@@ -9,85 +10,125 @@
     ag:ag
     aug: aug
     char:char
+    weap:weap
     do_default_tab: False
-    tab_width:358
-
+    tab_width:537
     TabbedPanelItem:
         text: 'НПС'
         GridLayout:
-            rows: 32
-            GridLayout:
-                cols:2
-                Label:
-                    id:ct
-                    text:""
-                    bold: True
-                    italic: True
-                Label:
-                    id: name
-                    text:""
-            GridLayout:
-                cols:3
+            cols:1
+            ScrollView:
+                size: self.size
+                do_scroll_x: False
+                do_scroll_y: True
                 GridLayout:
-                    rows:2
-                    Label:
-                        text:"Мощь"
-                        bold: True
-                        italic: True
-                    Label:
-                        font_size: '100'
-                        id: pw
-                        text:""
-                GridLayout:
-                    rows:2
-                    Label:
-                        text:"Скепсис"
-                        bold: True
-                        italic: True
-                    Label:
-                        font_size: '100'
-                        id: itl
-                        text:""
-                GridLayout:
-                    rows:2
-                    Label:
-                        text:"Проворство"
-                        bold: True
-                        italic: True
-                    Label:
-                        font_size: '100'
-                        id: ag
-                        text:""
+                    cols:1
+                    padding:20
+                    size_hint_y: None
+                    row_default_height: '450px'
+                    height: self.minimum_height
+                    GridLayout:
+                        cols:2
+                        Label:
+                            id:ct
+                            text:""
+                            bold: True
+                            italic: True
+                        Label:
+                            id: name
+                            text:""
+                    GridLayout:
+                        cols:3
+                        GridLayout:
+                            rows:2
+                            Label:
+                                text:"Мощь"
+                                bold: True
+                                italic: True
+                            Label:
+                                font_size: '120'
+                                id: pw
+                                text:""
+                        GridLayout:
+                            rows:2
+                            Label:
+                                text:"Скепсис"
+                                bold: True
+                                italic: True
+                            Label:
+                                font_size: '120'
+                                id: itl
+                                text:""
+                        GridLayout:
+                            rows:2
+                            Label:
+                                text:"Проворство"
+                                bold: True
+                                italic: True
+                            Label:
+                                font_size: '120'
+                                id: ag
+                                text:""
+                    GridLayout:
+                        rows:2
+                        Label:
+                            text:"Темперамент"
+                            bold: True
+                            italic: True
+                        Label:
+                            id: temp
+                            text:""
+                    GridLayout:
+                        rows:2
+                        Label:
+                            text:"Аугментации"
+                            bold: True
+                            italic: True
+                        Label:
+                            id: aug
+                            text:""
+                    GridLayout:
+                        rows:2
+                        Label:
+                            padding_bottom: 20
+                            text:"Характер"
+                            bold: True
+                            italic: True
+                        Label:
+                            id: char
+                            text:""
+                    GridLayout:
+                        rows:2
+                        Label:
+                            padding_bottom: 20
+                            text:"Умения"
+                            bold: True
+                            italic: True
+                        Label:
+                            id: alls
+                            text:""
+                    GridLayout:
+                        rows:2
+                        Label:
+                            padding_bottom: 20
+                            text:"Оружие"
+                            bold: True
+                            italic: True
+                        Label:
+                            id: weap
+                            text:""
+                    GridLayout:
+                        rows:2
+                        Label:
+                            padding_bottom: 20
+                            text:"Шмот и Броня"
+                            bold: True
+                            italic: True
+                        Label:
+                            text:"В разработке"
             GridLayout:
-                rows:2
-                Label:
-                    text:"Темперамент"
-                    bold: True
-                    italic: True
-                Label:
-                    id: temp
-                    text:""
-            GridLayout:
-                rows:2
-                Label:
-                    text:"Аугментации"
-                    bold: True
-                    italic: True
-                Label:
-                    id: aug
-                    text:""
-            GridLayout:
-                rows:2
-                Label:
-                    padding_bottom: 20
-                    text:"Характер"
-                    bold: True
-                    italic: True
-                Label:
-                    id: char
-                    text:""
-            BoxLayout:
-                size_hint: .5, .5
+                rows:1
+                size_hint: 1,0.2
                 padding: 20
                 Button:
                     text: "Сгенерировать"
@@ -98,31 +139,6 @@
         text: 'Противники'
         BoxLayout:
             InsPanel:
-    TabbedPanelItem:
-        text: 'Лут'
-        GridLayout:
-            cols:1
-            ScrollView:
-                size: self.size
-                do_scroll_x: False
-                do_scroll_y: True
-                GridLayout:
-                    id:list
-                    cols:1
-
-                    size_hint_y: None
-                    row_default_height: '40px'
-                    height: self.minimum_height
-            BoxLayout:
-                size_hint: .5, .5
-                padding: 20
-                Button:
-                    text: "Сгенерировать"
-                    on_release:
-                        root.rand_guns()
-
-
-
 
 
 <InsPanel>
@@ -167,24 +183,38 @@
                     text: "Невозможно"
                     on_release:
                         root.genp(5)
-            ScrollView:
-                size: self.size
-                do_scroll_x: False
-                do_scroll_y: True
-                GridLayout:
-                    id:grd1
-                    cols:1
-                    padding:20
-                    size_hint_y: None
-                    row_default_height: '160px'
-                    height: self.minimum_height
+            GridLayout:
+                id:grd1
+                cols:1
+                spacing: 10
+                padding:20
+
 
     TabbedPanelItem:
         text: 'Боссы'
         BoxLayout:
-            Label:
-                text: 'В разработке'
-
+            orientation: "vertical"
+            BoxLayout:
+                orientation: "vertical"
+                size_hint: 1,0.3
+                padding: 10
+                Button:
+                    size_hint: 1,0.1
+                    background_color: (0.0, 255.0, 255.0, 0)
+                    bold: True
+                    text: ""
+                    on_release:
+                Button:
+                    background_color: (128.0, 0.0, 0.0, 0.8)
+                    bold: True
+                    text: "Босс"
+                    on_release:
+                        root.boss()
+            GridLayout:
+                id:bs
+                cols:1
+                spacing: 10
+                padding:20
 
 
 <Pop@Popup>
@@ -195,6 +225,7 @@
     gun:gun
     hand:hand
     augpr:augpr
+    weap:weap
     GridLayout:
         rows:7
 
@@ -206,8 +237,11 @@
                 padding:20
                 cols:1
                 size_hint_y: None
-                row_default_height: '200px'
+                row_default_height: '450px'
                 height: self.minimum_height
+                GridLayout:
+                    cols:1
+                    id:bsnm
                 Label:
                     font_size: '75'
                     text:"Характеристики"
@@ -283,6 +317,7 @@
                             id: hand
                             text:""
                 GridLayout:
+                    margin:30
                     rows:2
                     Label:
                         text:"Аугментации"
@@ -291,6 +326,23 @@
                     Label:
                         id: augpr
                         text:""
+                GridLayout:
+                    rows:2
+                    Label:
+                        text:"Оружие"
+                        bold: True
+                        italic: True
+                    Label:
+                        id: weap
+                        text:""
+                GridLayout:
+                    rows:2
+                    Label:
+                        text:"Шмот"
+                        bold: True
+                        italic: True
+                    Label:
+                        text:"В разработке"
         GridLayout:
             padding:10
             rows:1
