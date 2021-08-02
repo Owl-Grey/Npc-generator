@@ -11,6 +11,7 @@
     aug: aug
     char:char
     weap:weap
+    wear:wear
     do_default_tab: False
     tab_width:537
     TabbedPanelItem:
@@ -125,7 +126,8 @@
                             bold: True
                             italic: True
                         Label:
-                            text:"В разработке"
+                            id:wear
+                            text:""
             GridLayout:
                 rows:1
                 size_hint: 1,0.2
@@ -226,6 +228,7 @@
     hand:hand
     augpr:augpr
     weap:weap
+    wear:wear
     GridLayout:
         rows:7
 
@@ -342,7 +345,8 @@
                         bold: True
                         italic: True
                     Label:
-                        text:"В разработке"
+                        id:wear
+                        text:""
         GridLayout:
             padding:10
             rows:1
