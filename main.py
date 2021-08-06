@@ -36,10 +36,13 @@ pril=["абсолютный","адский","азартный","активный
 pril_ch=["Поношенный","Форменный","Мешковатый","Набедренный","Расшитый","Траурный","Меховой","Добротный","Штатский","Модный","Рваный","Монашеский","Шерстяной","Опрятный","Нарядный","Хлопчатобумажный","Повседневный","Льняной","Мокрый","Одетый","Холщовый","Полотняный","штатскый","сменный","поношенный","мешковатый","неброский","модный","домотканый","добротный","потрепанный","измятый","полувоенный","нарядный","стильный","помятый","запасный","драный","рваный","несвежий","ветхий","сложенный","готовый","мятый","практичный","неопрятный","снятый","монашеский","праздничный","нищенский","мокрый","старомодный","выходный","неподходящий","фирменный","потёртый","гражданский","разноцветный","невзрачный","элегантный","траурный","рабочий","маскировочный","меховый","броский","верхняя","грязный","матросский","тёплый","приличный","подходящый","вызывающый","повседневный","неприметный","пятнистый","крестьянский","полотняный","полосатый","дамский","будничный","походный","шерстяный","спортивный","испорченный","ковбойский","разнообразный","дорожный","пурпурный","всевозможный","удобный","защитный","парадный","пёстрый","одинаковый","цветастый","бесформенный","убогий","холщовый","непривычный","традиционный","синтетический","громоздкий","летний","остальный","джинсовый","диковинный","суконный","неудобный","ненужный","камуфляжный","богатый","тренировочный","изысканный","домашний","скромный","уличный","кожаный"]
 сhmot=[["Рабочий комбинезон","Походный костюм","Деловой костюм","Спортивный костюм","Обноски","Почтальонский костюм","Панковские обноски","Платье"],["Кожаная курка байкера","Лабораторный халат","Майка","Рубашка","Свитер","Обычная куртка","Плащ","Майка-алкоголичка","Топ","Жилетка","Ветровка","Пуховик","Пиджак","Кардиган","Поло","Сарафан","Пижама","Туника","Пальто","Китель "]]
 chmot_corps=["Новая Готика","Забытая планета","Ахмедас","аХАЙё"]
+armor=["Бандитский набор","Набор Служителя закона","Военный набор","Гражданский набор","Джентльменский набор"]
+pril_armor=["Металлический","Тканевый","Кожанный","Пластсталевый","Пластиковый","Мусорный"]
 colors=["Красный","Оранжевый","Желтый","Зеленый","Голубой","Синий","Фиолетовый","Коричневый","Черный","Белый","Леопардовый","Пятнистый","Дырявый","Лазурный","Лимонный","Кремовый","Ореховый","Кофейный","Розовый","Лиловый","Радужный","Лаймовый","Лососевый","Горчичный","Мандариновый","Малиновый","Медный","Оливковый","Одуванчиковый","Неоновый"]
 wear=[]
 guns=[]
 mel=[]
+arm=[]
 
 class Pop(Popup):
     title = StringProperty()
@@ -63,8 +66,9 @@ class Pop(Popup):
         self.hand.text=str(pr_arr[i][1][2])
         self.weap.text=str(pr_arr[i][1][3])
         self.wear.text=str(pr_arr[i][3])
-        if len(pr_arr[i])>4:
-            m="Имя: "+str(pr_arr[i][4])
+        self.armor.text=str(pr_arr[i][4])
+        if len(pr_arr[i])>5:
+            m="Имя: "+str(pr_arr[i][5])
             self.title = m
             self.ids.bsnm.add_widget(Label(text=m,font_size='100',bold=True,italic=True))
         else:
@@ -201,10 +205,12 @@ class InsPanel(TabbedPanel):
             nav=self.navs(1)
             augp=self.aug(1)
             mn=wear[randint(1,len(wear)-1)]
+            armor=arm[randint(1,len(arm)-1)]
             pr.append(ch)
             pr.append(nav)
             pr.append(augp)
             pr.append(mn)
+            pr.append(armor)
             pr_arr.append(pr)
             self.ids.grd1.add_widget(
                 ToggleButton(
@@ -224,10 +230,12 @@ class InsPanel(TabbedPanel):
             nav=self.navs(2)
             augp=self.aug(2)
             mn=wear[randint(1,len(wear)-1)]
+            armor=arm[randint(1,len(arm)-1)]
             pr.append(ch)
             pr.append(nav)
             pr.append(augp)
             pr.append(mn)
+            pr.append(armor)
             pr_arr.append(pr)
             self.ids.grd1.add_widget(
                 ToggleButton(
@@ -247,10 +255,12 @@ class InsPanel(TabbedPanel):
             nav=self.navs(3)
             augp=self.aug(3)
             mn=wear[randint(1,len(wear)-1)]
+            armor=arm[randint(1,len(arm)-1)]
             pr.append(ch)
             pr.append(nav)
             pr.append(augp)
             pr.append(mn)
+            pr.append(armor)
             pr_arr.append(pr)
             self.ids.grd1.add_widget(
                 ToggleButton(
@@ -270,10 +280,12 @@ class InsPanel(TabbedPanel):
             nav=self.navs(4)
             augp=self.aug(4)
             mn=wear[randint(1,len(wear)-1)]
+            armor=arm[randint(1,len(arm)-1)]
             pr.append(ch)
             pr.append(nav)
             pr.append(augp)
             pr.append(mn)
+            pr.append(armor)
             pr_arr.append(pr)
             self.ids.grd1.add_widget(
                 ToggleButton(
@@ -293,10 +305,12 @@ class InsPanel(TabbedPanel):
             nav=self.navs(5)
             augp=self.aug(5)
             mn=wear[randint(1,len(wear)-1)]
+            armor=arm[randint(1,len(arm)-1)]
             pr.append(ch)
             pr.append(nav)
             pr.append(augp)
             pr.append(mn)
+            pr.append(armor)
             pr_arr.append(pr)
             self.ids.grd1.add_widget(
                 ToggleButton(
@@ -319,10 +333,12 @@ class InsPanel(TabbedPanel):
             augp=self.aug(6)
             name=pril[randint(1,len(pril)-1)]
             mn=wear[randint(1,len(wear)-1)]
+            armor=arm[randint(1,len(arm)-1)]
             pr.append(ch)
             pr.append(nav)
             pr.append(augp)
             pr.append(mn)
+            pr.append(armor)
             pr.append(name)
             pr_arr.append(pr)
             print(pr_arr)
@@ -410,8 +426,15 @@ class Container(TabbedPanel):
             y=randint(0,len(mel)-1)
             self.weap.text = str(mel[y])
     def rand_wear(self):
+        m=randint(0,1)
         y=randint(0,len(wear)-1)
         self.wear.text = str(wear[y])
+        if m ==1:
+            z=randint(0,len(arm)-1)
+            self.armor.text = str(arm[z])
+            
+        else:
+            self.armor.text = "Броня не обнаружена"
     def rand_name(self):
         rn = RussianNames(count=1, patronymic=False).get_person()
         self.name.text = str(rn)
@@ -433,6 +456,7 @@ class MyApp(App):
         self.rand_guns()
         self.rand_mellee()
         self.rand_chmot()
+        self.get_armor()
     def rand_guns(self, *args):
         ch=''
         guns.clear()
@@ -599,6 +623,16 @@ class MyApp(App):
                     else:
                         l= j + " " + str(gun_corps[x]) + ' "' + str(pril[y]) + " " + str(sus[z]) + '"'+"\n"+ ur
                 mel.append(l)
+    def get_armor(self, *args):
+        arm.clear()
+        for j in armor:
+            for i in range(15):
+                l=""
+                x=randint(0,len(gun_corps)-1)
+                y=randint(0,len(pril_armor)-1)
+                z=randint(0,len(colors)-1)
+                l= colors[z] + " " + pril_armor[y] + " " + j + "\nот " + str(gun_corps[x])
+                arm.append(l)
 
 if __name__ == "__main__":
 	MyApp().run()

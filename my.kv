@@ -11,6 +11,7 @@
     aug: aug
     char:char
     weap:weap
+    armor:armor
     wear:wear
     do_default_tab: False
     tab_width:537
@@ -122,11 +123,21 @@
                         rows:2
                         Label:
                             padding_bottom: 20
-                            text:"Шмот и Броня"
+                            text:"Шмот"
                             bold: True
                             italic: True
                         Label:
                             id:wear
+                            text:""
+                    GridLayout:
+                        rows:2
+                        Label:
+                            padding_bottom: 20
+                            text:"Броня"
+                            bold: True
+                            italic: True
+                        Label:
+                            id:armor
                             text:""
             GridLayout:
                 rows:1
@@ -229,6 +240,7 @@
     augpr:augpr
     weap:weap
     wear:wear
+    armor:armor
     GridLayout:
         rows:7
 
@@ -346,6 +358,15 @@
                         italic: True
                     Label:
                         id:wear
+                        text:""
+                GridLayout:
+                    rows:2
+                    Label:
+                        text:"Броня"
+                        bold: True
+                        italic: True
+                    Label:
+                        id:armor
                         text:""
         GridLayout:
             padding:10
